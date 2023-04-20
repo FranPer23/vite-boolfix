@@ -9,6 +9,30 @@ export default {
     AppHeader,
     AppMain,
   },
+  data() {
+    return {
+      store,
+    };
+  },
+  methods: {
+    performSearch() {
+      if (this.store.searchKey) {
+        this.getMovies();
+      }
+    },
+    getMovies() {
+      axios
+        .get(`${this.store.apiUrl}/search/movie`, {
+          params: {
+            api_key: this.store.apiKey,
+            query: this.store.searchKey,
+          },
+        })
+        .then((resp) => {
+          console.log(resp);
+        });
+    },
+  },
 };
 </script>
 
