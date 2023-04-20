@@ -1,5 +1,22 @@
-<script></script>
+<script>
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import { store } from "./store";
+import axios from "axios";
 
-<template></template>
+export default {
+  components: {
+    AppHeader,
+    AppMain,
+  },
+};
+</script>
 
-<style></style>
+<template>
+  <AppHeader @search="performSearch" />
+  <AppMain />
+</template>
+
+<style lang="scss">
+@use "./styles/general.scss";
+</style>
