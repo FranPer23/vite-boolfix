@@ -1,7 +1,7 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
-import { store } from "./store.js";
+import { store } from "./store";
 import axios from "axios";
 
 export default {
@@ -9,6 +9,7 @@ export default {
     AppHeader,
     AppMain,
   },
+
   data() {
     return {
       store,
@@ -30,7 +31,7 @@ export default {
           },
         })
         .then((resp) => {
-          console.log(resp);
+          this.store.movies = resp.data.results;
         });
     },
     getSeries() {
@@ -42,7 +43,7 @@ export default {
           },
         })
         .then((resp) => {
-          console.log(resp);
+          this.store.tv = resp.data.results;
         });
     },
   },
