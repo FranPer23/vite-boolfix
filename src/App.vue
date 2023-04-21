@@ -24,7 +24,6 @@ export default {
       if (this.store.searchKey) {
         this.getMovies();
         this.getSeries();
-        this.getImg();
       }
     },
     getMovies() {
@@ -37,6 +36,7 @@ export default {
         })
         .then((resp) => {
           this.store.movies = resp.data.results;
+          console.log(this.store.movies);
         });
     },
     getSeries() {
@@ -49,17 +49,6 @@ export default {
         })
         .then((resp) => {
           this.store.series = resp.data.results;
-        });
-    },
-    getImg() {
-      axios
-        .get(`${this.store.img}`, {
-          params: {
-            api_key: this.store.apiKey,
-          },
-        })
-        .then((resp) => {
-          this.store.img = resp.data.results;
         });
     },
   },
