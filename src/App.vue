@@ -1,6 +1,7 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+
 import { store } from "./store";
 import axios from "axios";
 
@@ -9,7 +10,10 @@ export default {
     AppHeader,
     AppMain,
   },
-
+  props: {
+    movie: Object,
+    serie: Object,
+  },
   data() {
     return {
       store,
@@ -20,6 +24,7 @@ export default {
       if (this.store.searchKey) {
         this.getMovies();
         this.getSeries();
+        this.getImg();
       }
     },
     getMovies() {
@@ -43,7 +48,18 @@ export default {
           },
         })
         .then((resp) => {
-          this.store.tv = resp.data.results;
+          this.store.series = resp.data.results;
+        });
+    },
+    getImg() {
+      axios
+        .get(`${this.store.img}`, {
+          params: {
+            api_key: this.store.apiKey,
+          },
+        })
+        .then((resp) => {
+          this.store.img = resp.data.results;
         });
     },
   },
