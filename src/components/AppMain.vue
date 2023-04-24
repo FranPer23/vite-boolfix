@@ -1,11 +1,13 @@
 <script>
 import { store } from "../store";
-import AppCard from "./AppCard.vue";
+import AppMovies from "./AppMovies.vue";
+import AppSeries from "./AppSeries.vue";
 
 export default {
   name: "AppMain",
   components: {
-    AppCard,
+    AppMovies,
+    AppSeries,
   },
   data() {
     return {
@@ -17,10 +19,10 @@ export default {
 
 <template>
   <h2>Movies</h2>
-  <AppCard />
+  <AppMovies />
 
   <h2>Series</h2>
-  <AppCard />
+  <AppSeries />
 </template>
 
 <style></style>
