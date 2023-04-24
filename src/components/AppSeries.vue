@@ -34,8 +34,8 @@ export default {
           <div class="poster-wrapper">
             <img class="poster" :src="getImg(serie.poster_path)" alt="" />
             <div class="card-details text-center">
-              <h4>{{ serie.original_title }}</h4>
-              <h4>{{ serie.title }}</h4>
+              <h4>{{ serie.name }}</h4>
+              <h4>{{ serie.original_name }}</h4>
               <div>
                 <p v-if="!flags.includes(serie.original_language)">
                   {{ serie.original_language }}
